@@ -19,7 +19,7 @@
     COMBAT LOG FUNCTIONS
   ]]----------------------------------------------------------
 
-	--[[ 
+	--[[
 	 * Initialize Combat Log Component
 	 * --------------------------------
 	 * Called by FTC:Initialize()
@@ -33,7 +33,7 @@
 			FCL = FTC.LMW:CreateMsgWindow("FTC_CombatLog", GetString(FTC_CL_Label) , nil , nil )
 			FCL:SetDimensions(FTC.Vars.LogWidth,FTC.Vars.LogHeight)
 			-- fix for High Isle GuiRoot startup error
-			--FCL:SetParent(FTC_UI)
+			-- FCL:SetParent(FTC_UI)
 			FCL:SetParent(GuiRoot)
 			FCL:ClearAnchors()
 			FCL:SetAnchor(unpack(FTC.Vars.FTC_CombatLog))
@@ -48,7 +48,7 @@
 		FTC_CombatLogLabel:SetFont(FTC.UI:Font(FTC.Vars.LogFont,FTC.Vars.LogFontSize+2,true))
 		FTC_CombatLogBg:SetAlpha(FTC.Vars.LogOpacity/100)
 
-		--[[ 
+		--[[
 		 * Prehook Chat window
 		 ]]--
 		local chatSystem = SYSTEMS:GetObject("ChatSystem")
@@ -64,17 +64,17 @@
 
 			ZO_PreHook(chatSystem, "Minimize", function() FTC.Log:SetupChat( false ) end)
 			ZO_PreHook(chatSystem, "Maximize", function() FTC.Log:SetupChat( true ) end)
-			
+
 			isPreHooked = true
 		end)
-		
+
 		-- Save initialization status
 		if not FTC.init.Log then
 			FTC.init.Log = true
 		end
 	end
 
-	--[[ 
+	--[[
 	 * Setup Combat Log Interaction with Chat
 	 * --------------------------------
 	 * Called by FTC.Log:Initialize()
@@ -92,7 +92,7 @@
 		end
 	end
 
-	--[[ 
+	--[[
 	 * Setup Combat Log Interaction with Chat
 	 * --------------------------------
 	 * Called by FTC.Log:Initialize()
@@ -111,7 +111,7 @@
 		end
 	end
 
-	--[[ 
+	--[[
 	 * Print Message to Log
 	 * --------------------------------
 	 * Called by FTC.Log:Damage()
@@ -133,7 +133,7 @@
 		log:AddText( time .. message , unpack(color) )
 	end
 
-	--[[ 
+	--[[
 	 * Write Combat Log Damage Events
 	 * --------------------------------
 	 * Called by FTC:OnCombatEvent()
@@ -206,7 +206,7 @@
 
 			-- Ignore healing/ignore healing out of combat
 			if (FTC.Vars.LogCOH and not IsUnitInCombat("player") and damage.heal) or (FTC.Vars.LogHideHeal and damage.heal) then
-			
+
 			else
 				-- Construct the message
 				FTC.Log:Print( subject .. verb .. target .. ability .. amount , color )
@@ -214,7 +214,7 @@
 		end
 	end
 
-	--[[ 
+	--[[
 	 * Write Combat Log Experience
 	 * --------------------------------
 	 * Called by FTC.OnXPUpdate()
@@ -223,7 +223,7 @@
 	function FTC.Log:Exp( currentExp , reason )
 
 		-- Get the new experience amount
-		local diff = math.max( currentExp - FTC.Player.exp , 0 ) 
+		local diff = math.max( currentExp - FTC.Player.exp , 0 )
 		if ( diff <= 0 ) then return end
 
 		-- Determine label
@@ -233,10 +233,10 @@
 		else label = " bonus " end
 
 		-- Print to log
-		FTC.Log:Print( "You earned " .. FTC.DisplayNumber(diff) .. label .. "experience." , {0,0.6,0.6} )	
+		FTC.Log:Print( "You earned " .. FTC.DisplayNumber(diff) .. label .. "experience." , {0,0.6,0.6} )
 	end
 
-	--[[ 
+	--[[
 	 * Write Combat Log Alliance Points
 	 * --------------------------------
 	 * Called by FTC.OnXPUpdate()
@@ -246,5 +246,5 @@
 		if ( difference < 0 ) then return end
 
 		-- Print to log
-		FTC.Log:Print( "You earned " .. FTC.DisplayNumber(difference) .. " alliance points." , {0,0.6,0.6} )	
+		FTC.Log:Print( "You earned " .. FTC.DisplayNumber(difference) .. " alliance points." , {0,0.6,0.6} )
 	end
