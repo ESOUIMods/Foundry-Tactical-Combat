@@ -59,13 +59,14 @@ function FTC:RegisterEvents()
   EVENT_MANAGER:RegisterForEvent("FTC", EVENT_LEADER_UPDATE, FTC.OnGroupChanged)
   EVENT_MANAGER:RegisterForEvent("FTC", EVENT_GROUP_MEMBER_CONNECTED_STATUS, FTC.OnGroupChanged)
   EVENT_MANAGER:RegisterForEvent("FTC", EVENT_GROUP_MEMBER_ROLE_CHANGED, FTC.OnGroupChanged)
+  EVENT_MANAGER:RegisterForEvent("FTC", EVENT_ACTIVE_COMPANION_STATE_CHANGED, FTC.OnGroupChanged)
   EVENT_MANAGER:RegisterForEvent("FTC", EVENT_GROUP_SUPPORT_RANGE_UPDATE, FTC.OnGroupRange)
 
   -- Experience Events
   EVENT_MANAGER:RegisterForEvent("FTC", EVENT_EXPERIENCE_UPDATE, FTC.OnXPUpdate)
   EVENT_MANAGER:RegisterForEvent("FTC", EVENT_ALLIANCE_POINT_UPDATE, FTC.OnAPUpdate)
   EVENT_MANAGER:RegisterForEvent("FTC", EVENT_LEVEL_UPDATE, FTC.OnLevel)
-  EVENT_MANAGER:RegisterForEvent("FTC", EVENT_CHAMPION_POINT_UPDATE, FTC.OnLevel)
+  EVENT_MANAGER:RegisterForEvent("FTC", EVENT_CHAMPION_POINT_UPDATE, FTC.OnCPLevel)
 
   -- Stats Events
   EVENT_MANAGER:RegisterForEvent("FTC", EVENT_MAP_PING, FTC.OnPing)
@@ -213,7 +214,7 @@ function FTC.OnPowerUpdate(eventCode, unitTag, powerIndex, powerType, powerValue
     end
 
     -- Group Updates
-  elseif (IsUnitGrouped('player') and string.sub(unitTag, 0, 5) == "group" and not (string.find(unitTag, "companion"))) then
+  elseif (IsUnitGrouped('player') and string.sub(unitTag, 0, 5) == "group" or unitTag == "companion") then
 
     -- Health
     if (powerType == COMBAT_MECHANIC_FLAGS_HEALTH) then
@@ -398,8 +399,8 @@ end
  * Called by EVENT_MOUNTED_STATE_CHANGED
  * --------------------------------
  ]]--
-function FTC.OnMount(code, state)
-  if (FTC.init.Frames) then FTC.Frames:SetupAltBar("mounted", state) end
+function FTC.OnMount(eventCode, mounted)
+  if (FTC.init.Frames) then FTC.Frames:SetupAltBar("mounted", mounted) end
 end
 
 --[[
@@ -461,7 +462,9 @@ end
 function FTC.OnEffectChanged(eventCode, changeType, effectSlot, effectName, unitTag, beginTime, endTime, stackCount, iconName, buffType, effectType, abilityType, statusEffectType, unitName, unitId, abilityId, sourceType)
 
   -- Pass information to buffs component
-  if (FTC.init.Buffs) then FTC.Buffs:EffectChanged(changeType, unitTag, unitName, unitId, effectType, effectName, abilityType, abilityId, buffType, statusEffectType, beginTime, endTime, iconName) end
+  if (FTC.init.Buffs) then
+    FTC.Buffs:EffectChanged(changeType, unitTag, unitName, unitId, effectType, effectName, abilityType, abilityId, buffType, statusEffectType, beginTime, endTime, iconName, stackCount)
+  end
 end
 
 --[[----------------------------------------------------------
@@ -561,10 +564,24 @@ end
  * Handle Player Level-Up
  * --------------------------------
  * Called by EVENT_LEVEL_UPDATE
- * Called by EVENT_VETERAN_RANK_UPDATE
  * --------------------------------
  ]]--
-function FTC:OnLevel(...)
+function FTC:OnLevel(eventCode, unitTag, level)
+
+  -- Update character level on unit frames
+  if (FTC.init.Frames) then
+    FTC.Frames:SetupPlayer()
+    FTC.Frames:SetupGroup()
+  end
+end
+
+--[[
+ * Handle Player Level-Up
+ * --------------------------------
+ * Called by EVENT_CHAMPION_POINT_UPDATE
+ * --------------------------------
+ ]]--
+function FTC:OnCPLevel(eventCode, unitTag, oldChampionPoints, currentChampionPoints)
 
   -- Update character level on unit frames
   if (FTC.init.Frames) then
@@ -580,15 +597,13 @@ end
 --[[
  * Handle Map Pings
  * --------------------------------
- * Called by EVENT_LEVEL_UPDATE
- * Called by EVENT_VETERAN_RANK_UPDATE
+ * Called by EVENT_MAP_PING
  * --------------------------------
  ]]--
-function FTC.OnPing(eventCode, pingEventType, pingType, pingTag, offsetX, offsetY, isOwner)
+function FTC.OnPing(eventCode, pingEventType, pingType, pingTag, offsetX, offsetY, isLocalPlayerOwner)
 
   -- Register DPS posts
   if (FTC.init.Stats and pingType == MAP_PIN_TYPE_PING) then
-    FTC.Stats:AddPing(offsetX, offsetY, pingTag, isOwner)
+    FTC.Stats:AddPing(offsetX, offsetY, pingTag, isLocalPlayerOwner)
   end
 end
-
