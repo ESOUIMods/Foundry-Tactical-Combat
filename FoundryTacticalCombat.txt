@@ -4,7 +4,7 @@
 ## AddOnVersion: 129
 ## APIVersion: 101037 101038
 ## SavedVariables: FTC_VARS
-## DependsOn: LibAddonMenu-2.0>=34 LibMsgWin-1.0>=11
+## DependsOn: LibAddonMenu-2.0>=34 LibMsgWin-1.0>=11 LibMediaProvider-1.0>=21
 ## OptionalDependsOn: UnitFramesRebirth LibDebugLogger DebugLogViewer
 
 ; The MIT License (MIT)

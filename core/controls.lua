@@ -29,9 +29,9 @@ function FTC.UI:Controls()
 
   -- Change the styling
   welcome.buffer = _G["FTC_WelcomeBuffer"]
-  welcome.buffer:SetFont(FTC.UI:Font("standard", 18, true))
+  welcome.buffer:SetFont(FTC.UI:Font("Univers 57", 18, true))
   welcome.buffer:SetMaxHistoryLines(1000)
-  FTC_WelcomeLabel:SetFont(FTC.UI:Font("esobold", 28, true))
+  FTC_WelcomeLabel:SetFont(FTC.UI:Font("Univers 67", 28, true))
   FTC_WelcomeSlider:SetHidden(false)
 end
 

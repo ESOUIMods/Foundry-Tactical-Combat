@@ -1,18 +1,13 @@
+local LMP = LibMediaProvider
+
+function FTC.UI:RegisterFonts()
+  LMP:Register("font", "Metamorphous", [[FoundryTacticalCombat/lib/fonts/Metamorphous-Regular.ttf]])
+  FTC.UI.fontListChoices = LMP:List(LMP.MediaType.FONT)
+end
+
 --[[----------------------------------------------------------
     INITIALIZE UI ASSETS
   ]]----------------------------------------------------------
-
--- Fonts
-FTC.UI.Fonts = {
-  ["meta"] = "FoundryTacticalCombat/lib/fonts/Metamorphous-Regular.ttf",
-  ["standard"] = "EsoUi/Common/Fonts/Univers57.otf",
-  ["esobold"] = "EsoUi/Common/Fonts/Univers67.otf",
-  ["antique"] = "EsoUI/Common/Fonts/ProseAntiquePSMT.otf",
-  ["handwritten"] = "EsoUI/Common/Fonts/Handwritten_Bold.otf",
-  ["trajan"] = "EsoUI/Common/Fonts/TrajanPro-Regular.otf",
-  ["futura"] = "EsoUI/Common/Fonts/FuturaStd-CondensedLight.otf",
-  ["futurabold"] = "EsoUI/Common/Fonts/FuturaStd-Condensed.otf",
-}
 
 -- Textures
 FTC.UI.Textures = {
@@ -83,7 +78,7 @@ end
  ]]--
 function FTC.UI:Font(font, size, shadow)
 
-  font = (FTC.UI.Fonts[font] ~= nil) and FTC.UI.Fonts[font] or font
+  font = LMP:Fetch('font', font) .. '|%d'
   size = size or 14
   shadow = shadow and '|soft-shadow-thick' or ''
 

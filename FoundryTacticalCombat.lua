@@ -70,6 +70,9 @@ function FTC.Initialize(eventCode, addOnName)
 
   -- Load Saved Variables
   FTC.Vars = ZO_SavedVars:NewAccountWide('FTC_VARS', (FTC.settings * 100), nil, FTC.Defaults)
+  
+  -- Setup Fonts
+  FTC.UI:RegisterFonts()
 
   -- Define target frame
   FTC.TARGET_WINDOW = ZO_TargetUnitFramereticleover or UnitFramesRebirth_TargetUnitFramereticleover

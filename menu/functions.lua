@@ -4,6 +4,7 @@
 local FTC = FTC
 FTC.Menu = {}
 local LAM2 = LibAddonMenu2
+local LMP = LibMediaProvider
 
 --[[
  * Initialize Menu Component

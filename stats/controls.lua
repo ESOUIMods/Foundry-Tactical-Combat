@@ -15,17 +15,17 @@ function FTC.Stats:Controls()
   DM:SetHandler("OnMouseDoubleClick", function() FTC.Stats:Toggle() end)
 
   local damage = FTC.UI:Control("FTC_MiniMeter_Dam", DM, { 80, 32 }, { LEFT, LEFT, 0, 0 }, false)
-  damage.label = FTC.UI:Label("FTC_MiniMeter_DamLabel", damage, { 48, 32 }, { RIGHT, RIGHT, 0, 0 }, FTC.UI:Font("standard", 16, true), { 1, 1, 1, 1 }, { 0, 1 }, "0", false)
+  damage.label = FTC.UI:Label("FTC_MiniMeter_DamLabel", damage, { 48, 32 }, { RIGHT, RIGHT, 0, 0 }, FTC.UI:Font("Univers 57", 16, true), { 1, 1, 1, 1 }, { 0, 1 }, "0", false)
   damage.icon = FTC.UI:Texture("FTC_MiniMeter_DamIcon", damage, { 32, 32 }, { LEFT, LEFT, 0, -1 }, '/esoui/art/icons/poi/poi_battlefield_complete.dds', false)
   DM.damage = damage
 
   local healing = FTC.UI:Control("FTC_MiniMeter_Heal", DM, { 80, 32 }, { LEFT, RIGHT, 0, 0, damage }, false)
-  healing.label = FTC.UI:Label("FTC_MiniMeter_HealLabel", healing, { 48, 32 }, { RIGHT, RIGHT, 0, 0 }, FTC.UI:Font("standard", 16, true), { 1, 1, 1, 1 }, { 0, 1 }, "0", false)
+  healing.label = FTC.UI:Label("FTC_MiniMeter_HealLabel", healing, { 48, 32 }, { RIGHT, RIGHT, 0, 0 }, FTC.UI:Font("Univers 57", 16, true), { 1, 1, 1, 1 }, { 0, 1 }, "0", false)
   healing.icon = FTC.UI:Texture("FTC_MiniMeter_HealIcon", healing, { 26, 26 }, { LEFT, LEFT, 3, 0 }, '/esoui/art/buttons/gamepad/pointsplus_up.dds', false)
   DM.healing = healing
 
   local time = FTC.UI:Control("FTC_MiniMeter_Time", DM, { 80, 32 }, { LEFT, RIGHT, 0, 0, healing }, false)
-  time.label = FTC.UI:Label("FTC_MiniMeter_TimeLabel", time, { 48, 32 }, { RIGHT, RIGHT, 0, 0 }, FTC.UI:Font("standard", 16, true), { 1, 1, 1, 1 }, { 0, 1 }, "0:00", false)
+  time.label = FTC.UI:Label("FTC_MiniMeter_TimeLabel", time, { 48, 32 }, { RIGHT, RIGHT, 0, 0 }, FTC.UI:Font("Univers 57", 16, true), { 1, 1, 1, 1 }, { 0, 1 }, "0:00", false)
   time.icon = FTC.UI:Texture("FTC_MiniMeter_TimeIcon", time, { 28, 28 }, { LEFT, LEFT, 2, 0 }, '/esoui/art/mounts/timer_icon.dds', false)
   DM.time = time
 
@@ -45,10 +45,10 @@ function FTC.Stats:Controls()
   GDPS:SetHandler("OnMouseUp", function(self) FTC.Menu:SaveAnchor(self) end)
 
   -- Headers
-  GDPS.namesH = FTC.UI:Label("FTC_GroupDPS_NamesHeader", GDPS, { 140, 25 }, { TOPLEFT, TOPLEFT, 10, 5 }, FTC.UI:Font("standard", 16, true), { 1, 1, 1, 1 }, { 0, 1 }, "Player", false)
-  GDPS.timeH = FTC.UI:Label("FTC_GroupDPS_TimeHeader", GDPS, { 75, 25 }, { LEFT, RIGHT, 0, 0, GDPS.namesH }, FTC.UI:Font("standard", 16, true), { 1, 1, 1, 1 }, { 0, 1 }, "Time", false)
-  GDPS.damageH = FTC.UI:Label("FTC_GroupDPS_DamageHeader", GDPS, { 100, 25 }, { LEFT, RIGHT, 0, 0, GDPS.timeH }, FTC.UI:Font("standard", 16, true), { 1, 1, 1, 1 }, { 0, 1 }, "Damage", false)
-  GDPS.dpsH = FTC.UI:Label("FTC_GroupDPS_DPSHeader", GDPS, { 75, 25 }, { LEFT, RIGHT, 0, 0, GDPS.damageH }, FTC.UI:Font("standard", 16, true), { 1, 1, 1, 1 }, { 0, 1 }, "DPS", false)
+  GDPS.namesH = FTC.UI:Label("FTC_GroupDPS_NamesHeader", GDPS, { 140, 25 }, { TOPLEFT, TOPLEFT, 10, 5 }, FTC.UI:Font("Univers 57", 16, true), { 1, 1, 1, 1 }, { 0, 1 }, "Player", false)
+  GDPS.timeH = FTC.UI:Label("FTC_GroupDPS_TimeHeader", GDPS, { 75, 25 }, { LEFT, RIGHT, 0, 0, GDPS.namesH }, FTC.UI:Font("Univers 57", 16, true), { 1, 1, 1, 1 }, { 0, 1 }, "Time", false)
+  GDPS.damageH = FTC.UI:Label("FTC_GroupDPS_DamageHeader", GDPS, { 100, 25 }, { LEFT, RIGHT, 0, 0, GDPS.timeH }, FTC.UI:Font("Univers 57", 16, true), { 1, 1, 1, 1 }, { 0, 1 }, "Damage", false)
+  GDPS.dpsH = FTC.UI:Label("FTC_GroupDPS_DPSHeader", GDPS, { 75, 25 }, { LEFT, RIGHT, 0, 0, GDPS.damageH }, FTC.UI:Font("Univers 57", 16, true), { 1, 1, 1, 1 }, { 0, 1 }, "DPS", false)
 
   -- Divider
   GDPS.divider = FTC.UI:Texture("FTC_GroupDPS_NamesIcon", GDPS, { 360, 8 }, { TOPLEFT, TOPLEFT, 20, 32 }, 'EsoUI/Art/Miscellaneous/horizontalDivider.dds', false)
@@ -56,10 +56,10 @@ function FTC.Stats:Controls()
   GDPS:SetDrawLayer(DL_OVERLAY)
 
   -- List
-  GDPS.names = FTC.UI:Label("FTC_GroupDPS_Names", GDPS, { 140, 600 }, { TOPLEFT, TOPLEFT, 10, 40 }, FTC.UI:Font("standard", 16, true), { 1, 1, 1, 1 }, { 0, 0 }, "names", false)
-  GDPS.time = FTC.UI:Label("FTC_GroupDPS_Time", GDPS, { 75, 600 }, { LEFT, RIGHT, 0, 0, GDPS.names }, FTC.UI:Font("standard", 16, true), { 1, 1, 1, 1 }, { 0, 0 }, "time", false)
-  GDPS.damage = FTC.UI:Label("FTC_GroupDPS_Damage", GDPS, { 100, 600 }, { LEFT, RIGHT, 0, 0, GDPS.time }, FTC.UI:Font("standard", 16, true), { 1, 1, 1, 1 }, { 0, 0 }, "damage", false)
-  GDPS.dps = FTC.UI:Label("FTC_GroupDPS_DPS", GDPS, { 75, 600 }, { LEFT, RIGHT, 0, 0, GDPS.damage }, FTC.UI:Font("standard", 16, true), { 1, 1, 1, 1 }, { 0, 0 }, "dps", false)
+  GDPS.names = FTC.UI:Label("FTC_GroupDPS_Names", GDPS, { 140, 600 }, { TOPLEFT, TOPLEFT, 10, 40 }, FTC.UI:Font("Univers 57", 16, true), { 1, 1, 1, 1 }, { 0, 0 }, "names", false)
+  GDPS.time = FTC.UI:Label("FTC_GroupDPS_Time", GDPS, { 75, 600 }, { LEFT, RIGHT, 0, 0, GDPS.names }, FTC.UI:Font("Univers 57", 16, true), { 1, 1, 1, 1 }, { 0, 0 }, "time", false)
+  GDPS.damage = FTC.UI:Label("FTC_GroupDPS_Damage", GDPS, { 100, 600 }, { LEFT, RIGHT, 0, 0, GDPS.time }, FTC.UI:Font("Univers 57", 16, true), { 1, 1, 1, 1 }, { 0, 0 }, "damage", false)
+  GDPS.dps = FTC.UI:Label("FTC_GroupDPS_DPS", GDPS, { 75, 600 }, { LEFT, RIGHT, 0, 0, GDPS.damage }, FTC.UI:Font("Univers 57", 16, true), { 1, 1, 1, 1 }, { 0, 0 }, "dps", false)
 
   --[[----------------------------------------------------------
     EXPANDED ANALYTICS
@@ -78,13 +78,13 @@ function FTC.Stats:Controls()
   -- Abilities Detail
   local abilities = FTC.UI:Control("FTC_Report_Ability", FM, { FM:GetWidth() - 50, 200 }, { TOP, TOP, 0, 0 }, true)
   local header = FTC.UI:Control("FTC_Report_Ability_Header", abilities, { FM:GetWidth() - 50, 50 }, { TOP, TOP, 0, 0 }, false)
-  header.name = FTC.UI:Label("FTC_Report_Ability_Name", header, { 225, 50 }, { LEFT, LEFT, 100, 0 }, FTC.UI:Font("esobold", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, GetString(FTC_Ability), false)
-  header.count = FTC.UI:Label("FTC_Report_Ability_Count", header, { 50, 50 }, { LEFT, RIGHT, 0, 0, header.name }, FTC.UI:Font("esobold", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, "#", false)
-  header.total = FTC.UI:Label("FTC_Report_Ability_Total", header, { 150, 50 }, { LEFT, RIGHT, 0, 0, header.count }, FTC.UI:Font("esobold", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, GetString(FTC_Damage), false)
-  header.dps = FTC.UI:Label("FTC_Report_Ability_DPS", header, { 100, 50 }, { LEFT, RIGHT, 0, 0, header.total }, FTC.UI:Font("esobold", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, GetString(FTC_DPS), false)
-  header.crit = FTC.UI:Label("FTC_Report_Ability_Crit", header, { 100, 50 }, { LEFT, RIGHT, 0, 0, header.dps }, FTC.UI:Font("esobold", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, GetString(FTC_Crit), false)
-  header.avg = FTC.UI:Label("FTC_Report_Ability_Avg", header, { 100, 50 }, { LEFT, RIGHT, 0, 0, header.crit }, FTC.UI:Font("esobold", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, GetString(FTC_Average), false)
-  header.max = FTC.UI:Label("FTC_Report_Ability_Max", header, { 100, 50 }, { LEFT, RIGHT, 0, 0, header.avg }, FTC.UI:Font("esobold", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, GetString(FTC_Max), false)
+  header.name = FTC.UI:Label("FTC_Report_Ability_Name", header, { 225, 50 }, { LEFT, LEFT, 100, 0 }, FTC.UI:Font("Univers 67", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, GetString(FTC_Ability), false)
+  header.count = FTC.UI:Label("FTC_Report_Ability_Count", header, { 50, 50 }, { LEFT, RIGHT, 0, 0, header.name }, FTC.UI:Font("Univers 67", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, "#", false)
+  header.total = FTC.UI:Label("FTC_Report_Ability_Total", header, { 150, 50 }, { LEFT, RIGHT, 0, 0, header.count }, FTC.UI:Font("Univers 67", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, GetString(FTC_Damage), false)
+  header.dps = FTC.UI:Label("FTC_Report_Ability_DPS", header, { 100, 50 }, { LEFT, RIGHT, 0, 0, header.total }, FTC.UI:Font("Univers 67", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, GetString(FTC_DPS), false)
+  header.crit = FTC.UI:Label("FTC_Report_Ability_Crit", header, { 100, 50 }, { LEFT, RIGHT, 0, 0, header.dps }, FTC.UI:Font("Univers 67", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, GetString(FTC_Crit), false)
+  header.avg = FTC.UI:Label("FTC_Report_Ability_Avg", header, { 100, 50 }, { LEFT, RIGHT, 0, 0, header.crit }, FTC.UI:Font("Univers 67", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, GetString(FTC_Average), false)
+  header.max = FTC.UI:Label("FTC_Report_Ability_Max", header, { 100, 50 }, { LEFT, RIGHT, 0, 0, header.avg }, FTC.UI:Font("Univers 67", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, GetString(FTC_Max), false)
   abilities.header = header
   FM.abilities = abilities
 
@@ -117,9 +117,9 @@ function FTC.Stats.CreateTarget()
   -- Create target
   local control = FTC.UI:Control("FTC_Report_Target" .. counter, parent, { parent:GetWidth() - 50, 50 }, { CENTER, CENTER, 0, 0 }, false)
   control.backdrop = FTC.UI:Backdrop("FTC_Report_Target" .. counter .. "_BG", control, "inherit", { TOP, TOP, 0, 0 }, { 0, 0, 0, 0.6 }, { 0, 0, 0, 1 }, FTC.UI.Textures["grainy"], false)
-  control.name = FTC.UI:Label("FTC_Report_Target" .. counter .. "_Name", control, { 350, 50 }, { LEFT, LEFT, 25, 0, control.backdrop }, FTC.UI:Font("esobold", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, "Target Name", false)
-  control.total = FTC.UI:Label("FTC_Report_Target" .. counter .. "_Total", control, { 400, 50 }, { LEFT, RIGHT, 0, 0, control.name }, FTC.UI:Font("esobold", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, "Total Damage", false)
-  control.dps = FTC.UI:Label("FTC_Report_Target" .. counter .. "_DPS", control, { 200, 50 }, { RIGHT, RIGHT, -25, 0, control.backdrop }, FTC.UI:Font("esobold", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, "DPS", false)
+  control.name = FTC.UI:Label("FTC_Report_Target" .. counter .. "_Name", control, { 350, 50 }, { LEFT, LEFT, 25, 0, control.backdrop }, FTC.UI:Font("Univers 67", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, "Target Name", false)
+  control.total = FTC.UI:Label("FTC_Report_Target" .. counter .. "_Total", control, { 400, 50 }, { LEFT, RIGHT, 0, 0, control.name }, FTC.UI:Font("Univers 67", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, "Total Damage", false)
+  control.dps = FTC.UI:Label("FTC_Report_Target" .. counter .. "_DPS", control, { 200, 50 }, { RIGHT, RIGHT, -25, 0, control.backdrop }, FTC.UI:Font("Univers 67", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, "DPS", false)
 
   -- Expand button
   control.expand = FTC.UI:Button("FTC_Report_Target" .. counter .. "_Expand", control, { 32, 32 }, { RIGHT, RIGHT, -25, 0, control.backdrop }, BSTATE_NORMAL, nil, nil, nil, nil, nil, false)
@@ -162,13 +162,13 @@ function FTC.Stats.CreateAbility()
   local control = FTC.UI:Control("FTC_Report_Ability" .. counter, parent, { parent:GetWidth() - 50, 50 }, { CENTER, CENTER, 0, 0 }, false)
   control.icon = FTC.UI:Texture("FTC_Report_Ability" .. counter .. "_Icon", control, { 48, 48 }, { LEFT, LEFT, 0, 0 }, '/esoui/art/icons/icon_missing.dds', false)
   control.frame = FTC.UI:Texture("FTC_Report_Ability" .. counter .. "_Frame", control, { 50, 50 }, { CENTER, CENTER, 0, 0, control.icon }, '/esoui/art/actionbar/icon_metal04.dds', false)
-  control.name = FTC.UI:Label("FTC_Report_Ability" .. counter .. "_Name", control, { 225, 50 }, { LEFT, RIGHT, 25, 0, control.frame }, FTC.UI:Font("standard", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, "Ability Name", false)
-  control.count = FTC.UI:Label("FTC_Report_Ability" .. counter .. "_Count", control, { 50, 50 }, { LEFT, RIGHT, 0, 0, control.name }, FTC.UI:Font("standard", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, "Count", false)
-  control.total = FTC.UI:Label("FTC_Report_Ability" .. counter .. "_Total", control, { 150, 50 }, { LEFT, RIGHT, 0, 0, control.count }, FTC.UI:Font("standard", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, "Total", false)
-  control.dps = FTC.UI:Label("FTC_Report_Ability" .. counter .. "_DPS", control, { 100, 50 }, { LEFT, RIGHT, 0, 0, control.total }, FTC.UI:Font("standard", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, "DPS", false)
-  control.crit = FTC.UI:Label("FTC_Report_Ability" .. counter .. "_Crit", control, { 100, 50 }, { LEFT, RIGHT, 0, 0, control.dps }, FTC.UI:Font("standard", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, "Crit", false)
-  control.avg = FTC.UI:Label("FTC_Report_Ability" .. counter .. "_Avg", control, { 100, 50 }, { LEFT, RIGHT, 0, 0, control.crit }, FTC.UI:Font("standard", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, "Avg", false)
-  control.max = FTC.UI:Label("FTC_Report_Ability" .. counter .. "_Max", control, { 100, 50 }, { LEFT, RIGHT, 0, 0, control.avg }, FTC.UI:Font("standard", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, "Max", false)
+  control.name = FTC.UI:Label("FTC_Report_Ability" .. counter .. "_Name", control, { 225, 50 }, { LEFT, RIGHT, 25, 0, control.frame }, FTC.UI:Font("Univers 57", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, "Ability Name", false)
+  control.count = FTC.UI:Label("FTC_Report_Ability" .. counter .. "_Count", control, { 50, 50 }, { LEFT, RIGHT, 0, 0, control.name }, FTC.UI:Font("Univers 57", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, "Count", false)
+  control.total = FTC.UI:Label("FTC_Report_Ability" .. counter .. "_Total", control, { 150, 50 }, { LEFT, RIGHT, 0, 0, control.count }, FTC.UI:Font("Univers 57", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, "Total", false)
+  control.dps = FTC.UI:Label("FTC_Report_Ability" .. counter .. "_DPS", control, { 100, 50 }, { LEFT, RIGHT, 0, 0, control.total }, FTC.UI:Font("Univers 57", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, "DPS", false)
+  control.crit = FTC.UI:Label("FTC_Report_Ability" .. counter .. "_Crit", control, { 100, 50 }, { LEFT, RIGHT, 0, 0, control.dps }, FTC.UI:Font("Univers 57", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, "Crit", false)
+  control.avg = FTC.UI:Label("FTC_Report_Ability" .. counter .. "_Avg", control, { 100, 50 }, { LEFT, RIGHT, 0, 0, control.crit }, FTC.UI:Font("Univers 57", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, "Avg", false)
+  control.max = FTC.UI:Label("FTC_Report_Ability" .. counter .. "_Max", control, { 100, 50 }, { LEFT, RIGHT, 0, 0, control.avg }, FTC.UI:Font("Univers 57", 20, true), { 1, 1, 1, 1 }, { 0, 1 }, "Max", false)
   control.frame:SetDrawLayer(DL_OVERLAY)
 
   -- Return ability to pool

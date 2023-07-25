@@ -5,14 +5,14 @@
 function FTC.Hotbar:Controls()
 
   -- Ultimate tracker
-  local ultival = FTC.UI:Label("FTC_UltimateLevel", ActionButton8, { 120, 20 }, { BOTTOM, TOP, 0, -3 }, FTC.UI:Font("esobold", 16, true), nil, { 1, 2 }, "0/0", false)
-  local ultipct = FTC.UI:Label("FTC_UltimatePct", ActionButton8, 'inherit', { CENTER, CENTER, 0, 0 }, FTC.UI:Font("esobold", 20, true), nil, { 1, 1 }, "100%", false)
+  local ultival = FTC.UI:Label("FTC_UltimateLevel", ActionButton8, { 120, 20 }, { BOTTOM, TOP, 0, -3 }, FTC.UI:Font("Univers 67", 16, true), nil, { 1, 2 }, "0/0", false)
+  local ultipct = FTC.UI:Label("FTC_UltimatePct", ActionButton8, 'inherit', { CENTER, CENTER, 0, 0 }, FTC.UI:Font("Univers 67", 20, true), nil, { 1, 1 }, "100%", false)
   local ultibuff = FTC.UI:Texture("FTC_UltimateBuff", ActionButton8, { 160, 160 }, { CENTER, CENTER, 0, 0 }, '/esoui/art/crafting/white_burst.dds', false)
   ultibuff:SetAlpha(0)
   ultibuff:SetDrawLayer(DL_BACKGROUND)
 
   -- Potion cooldown
-  local potioncd = FTC.UI:Label("FTC_PotionCD", ActionButton9, { 120, 20 }, { BOTTOM, TOP, 0, -2 }, FTC.UI:Font("esobold", 16, true), nil, { 1, 2 }, "45s", false)
+  local potioncd = FTC.UI:Label("FTC_PotionCD", ActionButton9, { 120, 20 }, { BOTTOM, TOP, 0, -2 }, FTC.UI:Font("Univers 67", 16, true), nil, { 1, 2 }, "45s", false)
 end
 
 --[[
